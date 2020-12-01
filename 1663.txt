@@ -1,0 +1,30 @@
+class Solution {
+public:
+    string getSmallestString(int n, int k) {
+        int cur = n;
+        string res = "";
+        while(cur != 0)
+        {
+            if(cur * 26 > k)
+            {
+                if((cur-1) * 26 >= k)
+                {
+                    res += 'a';
+                    k -= 1;
+                }
+                else
+                {
+                    res += k - (cur-1) * 26 + 'a' - 1;
+                    k -= k - (cur-1) * 26 - 1;
+                }
+            }
+            else
+            {
+                res += 'z';
+                k -= 26;
+            }
+            cur--;
+        }
+        return res;
+    }
+};
